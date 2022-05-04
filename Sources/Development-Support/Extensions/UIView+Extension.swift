@@ -118,6 +118,15 @@ extension UIView: ViewBuilder {
         }
         return taggedSubviews
     }
+
+    func embed(view: UIView, insets: UIEdgeInsets = .zero) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: topAnchor, constant: insets.top),
+                                     view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.left),
+                                     view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -insets.right),
+                                     view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)])
+    }
 }
 
 public extension ViewBuilder where Self: UIView {
