@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Utils {
+public class Utils {
     static var screenBounds: CGRect {
         return UIScreen.main.bounds
     }
