@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     /// Example: 29-12-2020
     static var dateFormatddMMyyyy: String {
         return "dd-MM-yyyy"
@@ -129,7 +129,7 @@ extension Date {
     }
 }
 
-extension DateComponents {
+public extension DateComponents {
     var fromNow: Date {
         return Calendar.current.date(byAdding: self,
                                      to: Date())!
@@ -148,8 +148,7 @@ extension DateComponents {
         return DateComponents.combineComponents(lhs, rhs, multiplier: -1)
     }
 
-    static func combineComponents(_ lhs: DateComponents, _ rhs: DateComponents, multiplier: Int = 1)
-    -> DateComponents {
+    static func combineComponents(_ lhs: DateComponents, _ rhs: DateComponents, multiplier: Int = 1) -> DateComponents {
         var result = DateComponents()
         result.second = (lhs.second ?? 0) + (rhs.second ?? 0) * multiplier
         result.minute = (lhs.minute ?? 0) + (rhs.minute ?? 0) * multiplier

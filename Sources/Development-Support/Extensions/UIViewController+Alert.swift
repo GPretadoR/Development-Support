@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     private func createCancelAction(on alert: UIAlertController, title: String?, style: UIAlertController.Style) {
         guard !(title?.isEmpty ?? true) else { return }
             alert.addAction(UIAlertAction(title: title,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Data {
+public extension Data {
     mutating func append(string: String) {
         let data = string.data(
             using: String.Encoding.utf8,

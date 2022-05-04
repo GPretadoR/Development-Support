@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     func scaledWithMaxWidthOrHeightValue(value: CGFloat) -> UIImage? {
         let width = size.width
         let height = size.height
@@ -73,16 +73,16 @@ extension UIImage {
     }
 }
 
-enum ImageEncodingQuality {
+public enum ImageEncodingQuality {
     case png
     case jpeg(quality: Double)
 }
 
-enum ImageDecodingError: Error {
+public enum ImageDecodingError: Error {
     case decodeError
 }
 
-extension KeyedEncodingContainer {
+public extension KeyedEncodingContainer {
 
     mutating func encode(_ value: UIImage,
                          forKey key: KeyedEncodingContainer.Key,
@@ -99,8 +99,8 @@ extension KeyedEncodingContainer {
 
 }
 
-extension KeyedDecodingContainer {
-    public func decode(_ type: UIImage.Type, forKey key: KeyedDecodingContainer.Key) throws -> UIImage {
+public extension KeyedDecodingContainer {
+    func decode(_ type: UIImage.Type, forKey key: KeyedDecodingContainer.Key) throws -> UIImage {
         let imageData = try decode(Data.self, forKey: key)
         if let image = UIImage(data: imageData) {
             return image

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Int {
+public extension Int {
     var toTimeStamp: String {
         let h = self / 3600
         let m = (self % 3600) / 60
@@ -68,7 +68,7 @@ extension Int {
     }
 }
 
-extension UInt {
+public extension UInt {
     var toTimeStamp: String {
         let h = self / 3600
         let m = (self % 3600) / 60

@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol PropertyIteratable {
+public protocol PropertyIteratable {
     func allProperties() throws -> [String: Any]
 }
 
-extension PropertyIteratable {
+public extension PropertyIteratable {
     func allProperties() throws -> [String: Any] {
 
         var result: [String: Any] = [:]
@@ -35,9 +35,9 @@ extension PropertyIteratable {
     }
 }
 
-protocol PropertyReflectable { }
+public protocol PropertyReflectable { }
 
-extension PropertyReflectable {
+public extension PropertyReflectable {
     subscript(key: String) -> Any? {
         let m = Mirror(reflecting: self)
         return m.children.first { $0.label == key }?.value

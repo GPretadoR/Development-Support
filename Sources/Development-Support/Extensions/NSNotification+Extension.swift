@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSNotification.Name {
+public extension NSNotification.Name {
     static let ViewDidLoad = Notification.Name("ViewDidLoad")
     static let ViewWillAppear = Notification.Name("viewWillAppear")
     static let ViewDidAppear = Notification.Name("viewDidAppear")

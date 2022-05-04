@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension String {
+public extension String {
     func convertToDictionary() -> [String: Any]? {
         if let data = self.data(using: .utf8) {
             do {
@@ -91,17 +91,9 @@ extension String {
         let components = components(separatedBy: character)
         return components.first ?? ""
     }
-}
 
-private extension RangeExpression where Bound == String.Index {
-    func nsRange<S: StringProtocol>(in string: S) -> NSRange {
-        NSRange(self, in: string)
-    }
-}
+    // MARK: - HTML
 
-// MARK: - HTML
-
-extension String {
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
         return try? NSAttributedString(data: data,
@@ -111,5 +103,11 @@ extension String {
 
     var htmlToString: String {
         htmlToAttributedString?.string ?? ""
+    }
+}
+
+private extension RangeExpression where Bound == String.Index {
+    func nsRange<S: StringProtocol>(in string: S) -> NSRange {
+        NSRange(self, in: string)
     }
 }

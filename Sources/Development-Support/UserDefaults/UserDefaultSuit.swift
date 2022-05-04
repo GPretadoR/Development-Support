@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct UserDefaultSuit {
+public struct UserDefaultSuit {
     let name: String
 }
 
-extension UserDefaultSuit {
+public extension UserDefaultSuit {
     static let common = UserDefaultSuit(name: "Common")
 }

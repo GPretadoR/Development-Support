@@ -9,18 +9,18 @@
 import Foundation
 
 @propertyWrapper
-struct UserDefault<T> {
+public struct UserDefault<T> {
     let key: String
     let defaultValue: T
     let suitName: String?
 
-    init(key: String, defaultValue: T, suit: UserDefaultSuit? = nil) {
+    public init(key: String, defaultValue: T, suit: UserDefaultSuit? = nil) {
         self.key = key
         self.defaultValue = defaultValue
         self.suitName = suit?.name
     }
 
-    var wrappedValue: T {
+    public var wrappedValue: T {
         get {
             if let value = defaults.object(forKey: key) as? T {
                 return value
@@ -43,7 +43,7 @@ struct UserDefault<T> {
     }
 }
 
-extension UserDefault where T: OptionalProtocol {
+public extension UserDefault where T: OptionalProtocol {
     init(key: String, suit: UserDefaultSuit? = nil) {
         self.init(key: key, defaultValue: T(reconstructing: nil), suit: suit)
     }

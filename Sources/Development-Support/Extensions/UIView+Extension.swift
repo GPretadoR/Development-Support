@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ViewBuilder: AnyObject {}
+public protocol ViewBuilder: AnyObject {}
 
 extension UIView: ViewBuilder {
 
@@ -120,7 +120,7 @@ extension UIView: ViewBuilder {
     }
 }
 
-extension ViewBuilder where Self: UIView {
+public extension ViewBuilder where Self: UIView {
     init(builder: (Self) -> Void) {
         self.init()
         translatesAutoresizingMaskIntoConstraints = false
@@ -128,7 +128,7 @@ extension ViewBuilder where Self: UIView {
     }
 }
 
-extension UIStackView {
+public extension UIStackView {
     func removeAllArrangedSubviews() {
         arrangedSubviews.forEach {
             removeArrangedSubview($0)

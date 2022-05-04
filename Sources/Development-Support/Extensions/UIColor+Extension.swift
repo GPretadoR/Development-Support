@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
@@ -24,7 +24,7 @@ extension UIColor {
             blue: rgb & 0xFF)
     }
 
-    public convenience init?(hex: String) {
+    convenience init?(hex: String) {
         guard !hex.isEmpty else { return nil }
         let r, g, b, a: CGFloat
         var hexColor = hex

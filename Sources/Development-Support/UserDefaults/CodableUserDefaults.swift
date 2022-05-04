@@ -9,18 +9,18 @@
 import Foundation
 
 @propertyWrapper
-struct CodableUserDefault<T: Codable> {
-    let key: String
-    let defaultValue: T
-    let suitName: String?
+public struct CodableUserDefault<T: Codable> {
+    public let key: String
+    public let defaultValue: T
+    public let suitName: String?
 
-    init(key: String, defaultValue: T, suit: UserDefaultSuit? = nil) {
+    public init(key: String, defaultValue: T, suit: UserDefaultSuit? = nil) {
         self.key = key
         self.defaultValue = defaultValue
         self.suitName = suit?.name
     }
 
-    var wrappedValue: T {
+    public var wrappedValue: T {
         get {
             guard let data = defaults.data(forKey: key) else { return defaultValue }
             return (try? decoder.decode(T.self, from: data)) ?? defaultValue
@@ -43,7 +43,7 @@ struct CodableUserDefault<T: Codable> {
     private let decoder = JSONDecoder()
 }
 
-extension CodableUserDefault where T: OptionalProtocol {
+public extension CodableUserDefault where T: OptionalProtocol {
     init(key: String, suit: UserDefaultSuit? = nil) {
         self.init(key: key, defaultValue: T(reconstructing: nil), suit: suit)
     }

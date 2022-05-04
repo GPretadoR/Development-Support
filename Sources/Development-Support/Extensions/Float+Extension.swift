@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension Double {
+public extension Double {
     var toMeters: Int {
         return Int(self * 1000)
     }
@@ -34,18 +34,18 @@ extension Double {
     var toDegrees: Double { return self * 180 / .pi }
 }
 
-extension Float {
+public extension Float {
     var clean: String {
         return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
 }
 
-extension CGFloat {
+public extension CGFloat {
     var toRadians: CGFloat { return self * .pi / 180 }
     var toDegrees: CGFloat { return self * 180 / .pi }
 }
 
-extension String {
+public extension String {
     var cleanNumber: String {
         Double(self)?.clean ?? ""
     }

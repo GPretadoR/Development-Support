@@ -14,12 +14,12 @@ enum FileWriteError: Error {
     case convertToDataIssue
 }
 
-protocol FileWriter {
+public protocol FileWriter {
     var fileName: String { get }
     func write(_ text: String) throws
 }
 
-extension FileWriter {
+public extension FileWriter {
     var fileName: String { return "File.txt" }
 
     func write(_ text: String) throws {
