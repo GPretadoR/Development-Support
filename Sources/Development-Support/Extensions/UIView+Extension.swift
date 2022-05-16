@@ -10,7 +10,7 @@ import UIKit
 
 public protocol ViewBuilder: AnyObject {}
 
-extension UIView: ViewBuilder {
+public extension UIView {
 
     var ancestors: AnyIterator<UIView> {
         var current: UIView = self
