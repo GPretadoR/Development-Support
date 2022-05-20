@@ -129,8 +129,10 @@ public extension UIView {
     }
 }
 
-extension ViewBuilder where Self: UIView {
-    public init(builder: (Self) -> Void) {
+extension UIView: ViewBuilder {}
+
+public extension ViewBuilder where Self: UIView {
+    init(builder: (Self) -> Void) {
         self.init()
         translatesAutoresizingMaskIntoConstraints = false
         builder(self)
