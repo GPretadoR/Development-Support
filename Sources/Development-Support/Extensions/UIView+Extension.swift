@@ -127,6 +127,18 @@ public extension UIView {
                                      view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -insets.right),
                                      view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)])
     }
+
+    func ancestor<ViewType: UIView>(of type: ViewType.Type) -> ViewType? {
+        if let matchingView = self.superview as? ViewType {
+            return matchingView
+        } else {
+            return superview?.ancestor(of: type)
+        }
+    }
+
+    func subview<T>(of type: T.Type) -> T? {
+        return subviews.compactMap { $0 as? T ?? $0.subview(of: type) }.first
+    }
 }
 
 extension UIView: ViewBuilder {}
