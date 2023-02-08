@@ -76,14 +76,8 @@ public extension UIView {
     }
 
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        mask.shadowColor = UIColor.black.cgColor
-        mask.shadowOffset = CGSize(width: 6.0, height: 6.0)
-        mask.shadowOffset = CGSize(width: 50.0, height: 50.0)
-        mask.fillColor = UIColor.red.cgColor
-        layer.mask = mask
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = corners.caCornerMask
     }
 
     class func instanceFromNib(name: String) -> UIView {
@@ -157,5 +151,26 @@ public extension UIStackView {
             removeArrangedSubview($0)
             $0.removeFromSuperview()
         }
+    }
+}
+
+extension UIRectCorner {
+    
+    /// convert UIRectCorner to CACornerMask
+    var caCornerMask: CACornerMask {
+        var cornersMask = CACornerMask()
+        if self.contains(.topLeft) {
+            cornersMask.insert(.layerMinXMinYCorner)
+        }
+        if self.contains(.topRight) {
+            cornersMask.insert(.layerMaxXMinYCorner)
+        }
+        if self.contains(.bottomLeft) {
+            cornersMask.insert(.layerMinXMaxYCorner)
+        }
+        if self.contains(.bottomRight) {
+            cornersMask.insert(.layerMaxXMaxYCorner)
+        }
+        return cornersMask
     }
 }
