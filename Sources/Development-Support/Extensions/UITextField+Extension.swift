@@ -8,7 +8,7 @@
 import Combine
 import UIKit
 
-extension UITextField {
+public extension UITextField {
     @available(iOS 13.0, *)
     var textChangePublisher: AnyPublisher<String, Never> {
         NotificationCenter.default.publisher(
@@ -20,7 +20,7 @@ extension UITextField {
     }
 }
 
-extension UITextView {
+public extension UITextView {
     @available(iOS 13.0, *)
     var textChangePublisher: AnyPublisher<String, Never> {
         NotificationCenter.default.publisher(
