@@ -122,6 +122,16 @@ public extension UIView {
                                      view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -insets.bottom)])
     }
 
+    func embed(view: UIView, ignoreSafeArea: Bool = true) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+
+        NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: ignoreSafeArea ? topAnchor : safeAreaLayoutGuide.topAnchor),
+                                     view.leadingAnchor.constraint(equalTo: ignoreSafeArea ? leadingAnchor : safeAreaLayoutGuide.leadingAnchor),
+                                     view.trailingAnchor.constraint(equalTo: ignoreSafeArea ? trailingAnchor : safeAreaLayoutGuide.trailingAnchor),
+                                     view.bottomAnchor.constraint(equalTo: ignoreSafeArea ? bottomAnchor : safeAreaLayoutGuide.bottomAnchor)])
+    }
+
     func ancestor<ViewType: UIView>(of type: ViewType.Type) -> ViewType? {
         if let matchingView = self.superview as? ViewType {
             return matchingView
